@@ -1,0 +1,101 @@
+.ticketStage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  user-select: none;
+
+  background-size: 20px 20px; /* 격자 크기 */
+  background-image:
+    linear-gradient(0deg, transparent 19px, var(--background-grid-color) 1px),
+    linear-gradient(90deg, transparent 19px, var(--background-grid-color) 1px);
+}
+
+
+.ticket {
+  position: absolute;
+  padding: calc(var(--tickets-gap)/2);
+  // overflow: hidden;
+  scale: 1;
+  opacity: 1;
+  // transition: 
+  //   left 0.05s ease,
+  //   top 0.05s ease
+  //   ;
+
+  &.isDragging &__box  {
+    background-color: var(--ticket-drag-border-color);
+    scale: 1.02;
+  }
+
+  &:hover &__box {
+    &__content {
+      background-color: var(--ticket-drag-background-color);
+    }
+  }
+
+  &__box {
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ticket-background-color);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    // overflow: hidden;
+    // scale: 1;
+    transition: 
+      box-shadow 0.2s ease,
+      background-color 0.7s ease;
+
+    .isDragging & {
+      z-index: 9999 !important;
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.8);
+      // scale: 1.05;
+
+      &__content {
+        background-color: var(--ticket-drag-background-color);
+      }
+  
+      .drag {
+        color: white;
+        background-color: rgb(0, 65, 194);
+      }
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 3fr 1fr;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      font-size: var(--ticket-font-size);
+      color: var(--ticket-font-color);
+      border-radius: 10px;
+      background-color: var(--ticket-background-color);
+      box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3), inset -1px -1px 0 rgba(0, 0, 0, 0.7);
+      // overflow: hidden;
+    }
+  }
+
+  .drag {
+    // position: absolute;
+    // left: -10px;
+    // top: -10px;
+    width: 3em;
+    height: 2em;
+    padding: 0.2em 0.5em;
+    text-align: center;
+    color: white;
+    background-color: black;
+  }
+
+  &__tag {
+    // grid-column: 3;
+  }
+
+  &__timer {
+    grid-column: span 3;
+  }
+}

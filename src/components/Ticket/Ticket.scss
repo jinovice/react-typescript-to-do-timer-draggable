@@ -1,0 +1,22 @@
+.ticket {
+  position: absolute;
+  padding: 10px;
+  // pointer-events: none;
+
+  * {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: var(--ticket-font-color);
+    border-radius: 5px;
+    // border: solid 2px white;
+    background-color: var(--ticket-background-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}
